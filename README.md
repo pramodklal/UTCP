@@ -14,6 +14,29 @@ plugin to invoke the tool. A tool can use its existing interface, such as an
 HTTP API, without necessarily adding a separate wrapper server. UTCP can also
 connect to MCP servers through its MCP plugin.
 
+UTCP (Universal Tool Calling Protocol) is an open-source, lightweight standard designed to let AI agents discover and call external tools directly using their native protocols (such as HTTP, CLI, WebSockets, or GraphQL) without needing dedicated wrapper servers or middleman proxies.
+
+Its core philosophy is: "If a human can call your API, an AI agent should be able to call it too—with the same security and no additional infrastructure."
+
+**How UTCP Works**
+Instead of routing tool requests through an intermediary server that translates messages, UTCP acts like a standardized instruction manual:
+
+Discovery: An agent fetches a UTCP Manual (a JSON document describing available tools, input/output schemas, authentication requirements, and connection details). Existing REST APIs can also auto-generate manuals from OpenAPI specs.
+
+Direct Calling: Once the agent reads the manual, it communicates directly with the tool's native endpoint (e.g., sending a standard GET/POST request to a REST API or running a local CLI command).
+
+Native Response: The tool processes the request and returns its normal output directly to the agent.
+
+**Key Features & Benefits**
+Zero "Wrapper Tax": You don't have to build, host, or maintain separate adapter servers for every tool or API you want an agent to use.
+
+Lower Latency: Direct peer-to-peer communication removes the extra network hops introduced by proxy servers.
+
+Native Security & Auth: Tools retain their existing authentication, rate-limiting, and billing mechanisms (API keys, OAuth, etc.) rather than reimplementing security in a wrapper layer.
+
+Multi-Protocol Plugin Architecture: Supports HTTP/REST, Server-Sent Events (SSE), WebSockets, Command-Line Interfaces (CLI), local text files, and even interoperability with MCP via dedicated plugins.
+
+
 ## What is MCP?
 
 The [Model Context Protocol (MCP)](https://modelcontextprotocol.io/introduction)

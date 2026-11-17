@@ -1,0 +1,106 @@
+<mxfile host="app.diagrams.net">
+  <diagram id="mcp-architecture" name="MCP Architecture">
+    <mxGraphModel dx="1382" dy="805" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1400" pageHeight="850" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="zone" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=none;strokeColor=#6c8ebf;strokeWidth=2;dashed=1;verticalAlign=top;spacingTop=10;fontStyle=1;fontSize=14;fontColor=#1f2937;" value="Azure workload boundary - app and remote MCP servers use private connectivity to Azure services" vertex="1">
+          <mxGeometry height="700" width="1140" x="230" y="55" as="geometry" />
+        </mxCell>
+        <mxCell id="title" parent="1" style="text;html=1;align=left;verticalAlign=middle;fontSize=22;fontStyle=1;fontColor=#12304a;" value="MCP implementation - multi-agent file and SQL workflow" vertex="1">
+          <mxGeometry height="35" width="900" x="25" y="20" as="geometry" />
+        </mxCell>
+        <mxCell id="subtitle" parent="1" style="text;html=1;align=left;verticalAlign=middle;fontSize=12;fontColor=#475569;" value="Example deployment: LangGraph app and two private Streamable HTTP MCP servers hosted in a VNet-integrated app environment." vertex="1">
+          <mxGeometry height="25" width="1150" x="25" y="55" as="geometry" />
+        </mxCell>
+        <mxCell id="user" parent="1" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;align=center;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=12;fontStyle=1;" value="User / Web UI&lt;br&gt;Natural-language request&lt;br&gt;(upload, find, update...)" vertex="1">
+          <mxGeometry height="120" width="100" x="60" y="250" as="geometry" />
+        </mxCell>
+        <mxCell id="entra" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontSize=13;" value="Microsoft Entra ID&lt;br&gt;User sign-in / OIDC&lt;br&gt;App authorization" vertex="1">
+          <mxGeometry height="85" width="165" x="27.5" y="485" as="geometry" />
+        </mxCell>
+        <mxCell id="openai" parent="1" style="ellipse;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=12;fontStyle=1;" value="Azure OpenAI&lt;br&gt;Chat model" vertex="1">
+          <mxGeometry height="150" width="150" x="550" y="80" as="geometry" />
+        </mxCell>
+        <mxCell id="appbox" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5faff;strokeColor=#6c8ebf;strokeWidth=2;verticalAlign=top;spacingTop=10;fontStyle=1;fontSize=14;" value="LangGraph application host (MCP host)" vertex="1">
+          <mxGeometry height="355" width="465" x="270" y="215" as="geometry" />
+        </mxCell>
+        <mxCell id="api" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=12;" value="Application API&lt;br&gt;HTTPS ingress; validate user identity and request" vertex="1">
+          <mxGeometry height="65" width="405" x="300" y="255" as="geometry" />
+        </mxCell>
+        <mxCell id="graph" parent="1" style="rhombus;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=12;fontStyle=1;" value="LangGraph supervisor&lt;br&gt;Route by task" vertex="1">
+          <mxGeometry height="130" width="260" x="300" y="340" as="geometry" />
+        </mxCell>
+        <mxCell id="blobagent" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=12;" value="Blob Storage agent&lt;br&gt;Allowlisted file operations" vertex="1">
+          <mxGeometry height="60" width="190" x="300" y="455" as="geometry" />
+        </mxCell>
+        <mxCell id="sqlagent" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=12;" value="SQL MI agent&lt;br&gt;Typed CRUD; no arbitrary SQL" vertex="1">
+          <mxGeometry height="60" width="190" x="515" y="455" as="geometry" />
+        </mxCell>
+        <mxCell id="mcpclients" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=11;fontStyle=1;" value="MCP clients&lt;br&gt;One connection per MCP server&lt;br&gt;Discover tools, then call tools/call" vertex="1">
+          <mxGeometry height="60" width="275" x="365" y="525" as="geometry" />
+        </mxCell>
+        <mxCell id="blobserver" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=12;fontStyle=1;" value="Blob MCP server&lt;br&gt;Streamable HTTP / JSON-RPC&lt;br&gt;Validate tool arguments and scope&lt;br&gt;Managed identity: Blob data role" vertex="1">
+          <mxGeometry height="110" width="245" x="800" y="260" as="geometry" />
+        </mxCell>
+        <mxCell id="sqlserver" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=12;fontStyle=1;" value="SQL MCP server&lt;br&gt;Streamable HTTP / JSON-RPC&lt;br&gt;Allowlisted parameterized CRUD / procedures&lt;br&gt;Managed identity: scoped SQL user" vertex="1">
+          <mxGeometry height="120" width="245" x="800" y="420" as="geometry" />
+        </mxCell>
+        <mxCell id="blob" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=12;fontStyle=1;" value="Azure Blob Storage&lt;br&gt;Private endpoint&lt;br&gt;Azure Storage SDK / REST&lt;br&gt;Container-scoped data permissions" vertex="1">
+          <mxGeometry height="105" width="235" x="1110" y="265" as="geometry" />
+        </mxCell>
+        <mxCell id="sqlmi" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=12;fontStyle=1;" value="Azure SQL Managed Instance&lt;br&gt;Private VNet endpoint&lt;br&gt;SQL Server protocol / driver&lt;br&gt;Scoped DB permissions" vertex="1">
+          <mxGeometry height="105" width="235" x="1110" y="435" as="geometry" />
+        </mxCell>
+        <mxCell id="monitor" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;fontSize=12;" value="Azure Monitor / Application Insights&lt;br&gt;Trace user request - graph node - MCP tool - data operation&lt;br&gt;Audit outcomes; redact prompts, tokens, and sensitive data" vertex="1">
+          <mxGeometry height="85" width="420" x="800" y="615" as="geometry" />
+        </mxCell>
+        <mxCell id="note" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=11;align=left;spacing=8;" value="MCP standardizes client-server tool exchange; MCP servers execute the Azure operations. Use a distinct managed identity and minimum permissions per server. Require policy / user confirmation for destructive delete operations. Use private transport, authenticated server access, and validate every tool input." vertex="1">
+          <mxGeometry height="80" width="465" x="270" y="620" as="geometry" />
+        </mxCell>
+        <mxCell id="e1" edge="1" parent="1" source="user" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;strokeColor=#4b5563;fontSize=11;" target="api" value="HTTPS request">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e2" edge="1" parent="1" source="user" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=block;endFill=1;strokeColor=#9673a6;fontSize=11;" target="entra" value="Sign-in / token">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e3" edge="1" parent="1" source="entra" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=block;endFill=1;strokeColor=#9673a6;fontSize=10;" target="api" value="Authenticated request">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e4" edge="1" parent="1" source="api" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=block;endFill=1;strokeColor=#4b5563;fontSize=10;" target="graph" value="request + identity context">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e5" edge="1" parent="1" source="graph" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=block;startArrow=block;endFill=1;startFill=1;strokeColor=#82b366;fontSize=10;" target="openai" value="prompt / tool choice / response">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e6" edge="1" parent="1" source="graph" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=block;endFill=1;strokeColor=#82b366;fontSize=10;" target="blobagent" value="route file task">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e7" edge="1" parent="1" source="graph" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=block;endFill=1;strokeColor=#82b366;fontSize=10;" target="sqlagent" value="route data task">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e8" edge="1" parent="1" source="blobagent" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=block;startArrow=block;endFill=1;startFill=1;strokeColor=#b85450;fontSize=10;" target="mcpclients" value="client 1: tools/list + tools/call">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e9" edge="1" parent="1" source="sqlagent" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=block;startArrow=block;endFill=1;startFill=1;strokeColor=#b85450;fontSize=10;" target="mcpclients" value="client 2: tools/list + tools/call">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e10" edge="1" parent="1" source="mcpclients" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=block;startArrow=block;endFill=1;startFill=1;strokeColor=#b85450;fontSize=10;" target="blobserver" value="Streamable HTTP / JSON-RPC">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e11" edge="1" parent="1" source="mcpclients" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=block;startArrow=block;endFill=1;startFill=1;strokeColor=#b85450;fontSize=10;" target="sqlserver" value="Streamable HTTP / JSON-RPC">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e12" edge="1" parent="1" source="blobserver" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=block;startArrow=block;endFill=1;startFill=1;strokeColor=#6c8ebf;fontSize=10;" target="blob" value="Azure SDK / Blob REST">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e13" edge="1" parent="1" source="sqlserver" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=block;startArrow=block;endFill=1;startFill=1;strokeColor=#6c8ebf;fontSize=10;" target="sqlmi" value="SQL driver / parameterized operations">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e14" edge="1" parent="1" source="graph" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=block;dashed=1;endFill=1;strokeColor=#666666;fontSize=10;" target="monitor" value="traces / metrics">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
